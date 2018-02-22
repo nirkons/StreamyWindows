@@ -1,0 +1,50 @@
+D:\Drive\Arduino\Programs\Windows\Streamy\Streamy\Streamy\bin\Debug\Streamy.exe.config
+D:\Drive\Arduino\Programs\Windows\Streamy\Streamy\bin\Debug\Streamy.exe.config
+D:\Drive\Arduino\Programs\Windows\Streamy\Streamy\bin\Debug\Streamy.exe
+D:\Drive\Arduino\Programs\Windows\Streamy\Streamy\bin\Debug\Streamy.pdb
+D:\Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.csprojResolveAssemblyReference.cache
+D:\Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.exe
+D:\Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.pdb
+D:\Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Interop.IWshRuntimeLibrary.dll
+D:\Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Interop.Shell32.dll
+D:\Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.csproj.ResolveComReference.cache
+D:\Drive\Arduino\Programs\Windows\Streamy\Streamy\bin\Debug\Streamy.exe.manifest
+D:\Drive\Arduino\Programs\Windows\Streamy\Streamy\bin\Debug\Streamy.application
+D:\Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.exe.manifest
+D:\Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.application
+C:\Users\Nirk\Google Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.csprojResolveAssemblyReference.cache
+C:\Users\Nirk\Google Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Interop.IWshRuntimeLibrary.dll
+C:\Users\Nirk\Google Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Interop.Shell32.dll
+C:\Users\Nirk\Google Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.csproj.ResolveComReference.cache
+C:\Users\Nirk\Google Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.Form1.resources
+C:\Users\Nirk\Google Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.Properties.Resources.resources
+C:\Users\Nirk\Google Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.csproj.GenerateResource.Cache
+C:\Users\Nirk\Google Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.csproj.CoreCompileInputs.cache
+C:\Users\Nirk\Google Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.exe
+C:\Users\Nirk\Google Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.pdb
+C:\Users\Nirk\Google Drive\Arduino\Programs\Windows\Streamy\Streamy\bin\Debug\Streamy.exe.config
+C:\Users\Nirk\Google Drive\Arduino\Programs\Windows\Streamy\Streamy\bin\Debug\Streamy.exe.manifest
+C:\Users\Nirk\Google Drive\Arduino\Programs\Windows\Streamy\Streamy\bin\Debug\Streamy.application
+C:\Users\Nirk\Google Drive\Arduino\Programs\Windows\Streamy\Streamy\bin\Debug\Streamy.exe
+C:\Users\Nirk\Google Drive\Arduino\Programs\Windows\Streamy\Streamy\bin\Debug\Streamy.pdb
+C:\Users\Nirk\Google Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.exe.manifest
+C:\Users\Nirk\Google Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.application
+D:\Drive\Arduino\Programs\Windows\Streamy - Copy\Streamy\bin\Debug\Streamy.exe.config
+D:\Drive\Arduino\Programs\Windows\Streamy - Copy\Streamy\obj\Debug\Interop.IWshRuntimeLibrary.dll
+D:\Drive\Arduino\Programs\Windows\Streamy - Copy\Streamy\obj\Debug\Interop.Shell32.dll
+D:\Drive\Arduino\Programs\Windows\Streamy - Copy\Streamy\obj\Debug\Streamy.csproj.ResolveComReference.cache
+D:\Drive\Arduino\Programs\Windows\Streamy - Copy\Streamy\obj\Debug\Streamy.exe
+D:\Drive\Arduino\Programs\Windows\Streamy - Copy\Streamy\obj\Debug\Streamy.pdb
+D:\Drive\Arduino\Programs\Windows\Streamy - Copy\Streamy\obj\Debug\Streamy.csprojResolveAssemblyReference.cache
+D:\Drive\Arduino\Programs\Windows\Streamy - Copy\Streamy\obj\Debug\Streamy.Form1.resources
+D:\Drive\Arduino\Programs\Windows\Streamy - Copy\Streamy\obj\Debug\Streamy.Properties.Resources.resources
+D:\Drive\Arduino\Programs\Windows\Streamy - Copy\Streamy\obj\Debug\Streamy.csproj.GenerateResource.Cache
+D:\Drive\Arduino\Programs\Windows\Streamy - Copy\Streamy\bin\Debug\Streamy.exe.manifest
+D:\Drive\Arduino\Programs\Windows\Streamy - Copy\Streamy\bin\Debug\Streamy.application
+D:\Drive\Arduino\Programs\Windows\Streamy - Copy\Streamy\bin\Debug\Streamy.exe
+D:\Drive\Arduino\Programs\Windows\Streamy - Copy\Streamy\bin\Debug\Streamy.pdb
+D:\Drive\Arduino\Programs\Windows\Streamy - Copy\Streamy\obj\Debug\Streamy.exe.manifest
+D:\Drive\Arduino\Programs\Windows\Streamy - Copy\Streamy\obj\Debug\Streamy.application
+D:\Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.Properties.Resources.resources
+D:\Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.csproj.GenerateResource.Cache
+D:\Drive\Arduino\Programs\Windows\Streamy\Streamy\obj\Debug\Streamy.Form1.resources
