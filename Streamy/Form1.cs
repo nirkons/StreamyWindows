@@ -87,9 +87,8 @@ namespace Streamy
             toolTip1.SetToolTip(this.closevideobox, "Video service does not allow multiple streaming tabs on the same browser, so this will close the open tab");
 
             //Setup configuration
-            string filePath = System.IO.Path.GetFullPath("settings.app.config");
-            var map = new ExeConfigurationFileMap { ExeConfigFilename = filePath };
-            Configuration config = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            
 
             if ((config.AppSettings.Settings["username"].Value != ""))
             {
@@ -241,23 +240,32 @@ namespace Streamy
                 runasadminlbl.Visible = true;
             }
             //Check if VLC is installed
-            if (IsSoftwareInstalled("VLC") == true)
+            try
             {
-                vlcinstalled.Visible = false;
-                downloadVLC.Visible = false;
-                configurevlc.Visible = true;
-                vlcnotconfiguredlabel.Visible = true;
+                if (IsSoftwareInstalled("VLC") == true)
+                {
+                    vlcinstalled.Visible = false;
+                    downloadVLC.Visible = false;
+                    configurevlc.Visible = true;
+                    vlcnotconfiguredlabel.Visible = true;
+
+
+                    //check if vlc is configured to allow controlling vlc via HTTP
+                    string path = (Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\vlc\\vlcrc");
+                    if (File.ReadLines(path).Any(line => line.Contains("streamyarduino2018")) == true)
+                    {
+                        vlcisconfiguredlbl.Visible = true;
+                        vlcnotconfiguredlabel.Visible = false;
+
+                    }
+
+                }
+            }
+            catch (Exception vlc)
+            {
 
             }
-            //configure VLC configuration file to allow controlling vlc via HTTP
-            string path = (Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\vlc\\vlcrc");
-            if (File.ReadLines(path).Any(line => line.Contains("streamyarduino2018")) == true)
-            {
-                vlcisconfiguredlbl.Visible = true;
-                vlcnotconfiguredlabel.Visible = false;
-
-            }
-
+            
 
             //Call function to check if music service is running every few seconds
             InitTimer();
@@ -280,29 +288,32 @@ namespace Streamy
         {
             string musicservicename = ReadFromSettings("musicservicename");
             //check if music service app is running
-            Process[] P = Process.GetProcessesByName(musicservicename);
-
-            if (P.Length > 0)
+            if (musicservicename != "")
             {
+                Process[] P = Process.GetProcessesByName(musicservicename);
 
-                label10.Visible = true;
-                label8.Visible = false;
+                if (P.Length > 0)
+                {
 
+                    label10.Visible = true;
+                    label8.Visible = false;
+
+                }
+                else
+                {
+                    label8.Visible = true;
+                    label10.Visible = false;
+                }
             }
-            else
-            {
-                label8.Visible = true;
-                label10.Visible = false;
-            }
+
         }
 
         public void LaunchVLC()
         {
 
             //get settings
-            string filePath = System.IO.Path.GetFullPath("settings.app.config");
-            var map = new ExeConfigurationFileMap { ExeConfigFilename = filePath };
-            Configuration config = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
             string blynkauthkey = config.AppSettings.Settings["username"].Value;
             
                 string html = "";
@@ -461,30 +472,42 @@ namespace Streamy
         //configure VLC configuration file
         private void configurevlc_Click(object sender, EventArgs e)
         {
-            
-            string path = (Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\vlc\\vlcrc");
-
-            // replaces #extraintf= with extraintf=http
-            // replaces #http-password= with http-password=streamyarduino2018
-            string text = File.ReadAllText(path);
-            text = text.Replace("#extraintf=", "extraintf=http");
-            //text = text.Replace("#http-password=", "http-password=streamyarduino2018");
-            text = text.Replace("#http-password=", "http-password=streamyarduino2018");
-            File.WriteAllText(path, text);
-
-
-            if (File.ReadLines(path).Any(line => line.Contains("streamyarduino2018")) == true)
-                {
-                vlcisconfiguredlbl.Visible = true;
-                vlcnotconfiguredlabel.Visible = false;
-                log.Items.Add("VLC Configured, if VLC is running, please restart it");
-
-            }
-            else
+            try
             {
-                log.Items.Add(@"Failed to configure VLC, Please go to C:\Users\YourUser\AppData\Roaming\vlc, open up vlcrc file, find #extraintf= and replace it with extraintf=http, find #http-password= and replace it with http-password=streamyarduino2018");
+                string path = (Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\vlc\\vlcrc");
+
+                // replaces #extraintf= with extraintf=http
+                // replaces #http-password= with http-password=streamyarduino2018
+                string text = File.ReadAllText(path);
+                text = text.Replace("#extraintf=", "extraintf=http");
+                //text = text.Replace("#http-password=", "http-password=streamyarduino2018");
+                text = text.Replace("#http-password=", "http-password=streamyarduino2018");
+                File.WriteAllText(path, text);
+
+
+                if (File.ReadLines(path).Any(line => line.Contains("streamyarduino2018")) == true)
+                {
+                    vlcisconfiguredlbl.Visible = true;
+                    vlcnotconfiguredlabel.Visible = false;
+                    log.Items.Add("VLC Configured, if VLC is running, please restart it");
+
+                }
+                else
+                {
+                    log.Items.Add("Failed to configure VLC, did you launch VLC at least once? if so try this:");
+
+                    log.Items.Add(@"Please go to C:\Users\YourUser\AppData\Roaming\vlc, open up vlcrc file, find #extraintf= and replace it with extraintf=http, find #http-password= and replace it with http-password=streamyarduino2018");
+
+                }
+            }
+            catch (Exception vlconf)
+            {
+                log.Items.Add("Failed to configure VLC, did you launch VLC at least once? if so try this:");
+
+                log.Items.Add(@"Please go to C:\Users\YourUser\AppData\Roaming\vlc, open up vlcrc file, find #extraintf= and replace it with extraintf=http, find #http-password= and replace it with http-password=streamyarduino2018");
 
             }
+
         }
 
         //Download VLC media player button
@@ -503,11 +526,8 @@ namespace Streamy
         private void confvideobtn_Click(object sender, EventArgs e)
         {
             ////get configuration file
-            string filePath = System.IO.Path.GetFullPath("settings.app.config");
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
-            var map = new ExeConfigurationFileMap { ExeConfigFilename = filePath };
-
-            Configuration config = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
             //require both fields, remove if existing username is present in app config file
             string oldusername = "{{usernameval}}";
             if ((Username.Text != null))
@@ -642,9 +662,8 @@ namespace Streamy
         public string LastWatched()
         {
             ////get configuration file
-            string filePath = System.IO.Path.GetFullPath("settings.app.config");
-            var map = new ExeConfigurationFileMap { ExeConfigFilename = filePath };
-            Configuration config = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
             string BLYNKAPIKEY = config.AppSettings.Settings["username"].Value;
 
             try
@@ -678,11 +697,8 @@ namespace Streamy
         private void WriteToSettings(string keyname, string value)
         {
             ////get configuration file
-            string filePath = System.IO.Path.GetFullPath("settings.app.config");
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
-            var map = new ExeConfigurationFileMap { ExeConfigFilename = filePath };
-
-            Configuration config = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
             config.AppSettings.Settings.Remove(keyname);
             config.AppSettings.Settings.Add(keyname, value);
             // Save the changes in App.config file.
@@ -695,11 +711,9 @@ namespace Streamy
         public string ReadFromSettings(string key)
         {
             //Setup configuration
-            string filePath = System.IO.Path.GetFullPath("settings.app.config");
-            var map = new ExeConfigurationFileMap { ExeConfigFilename = filePath };
-            Configuration config = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
-            if (config.AppSettings.Settings[key] == null || config.AppSettings.Settings[key].Value == "")
+            if (config.AppSettings.Settings[key] != null || config.AppSettings.Settings[key].Value != "")
             {
                 return config.AppSettings.Settings[key].Value;
             }

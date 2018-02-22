@@ -1,0 +1,15 @@
+D:\Nir\Arduino\Streamy\Streamy\bin\Release\Streamy.exe.config
+D:\Nir\Arduino\Streamy\Streamy\obj\Release\Interop.IWshRuntimeLibrary.dll
+D:\Nir\Arduino\Streamy\Streamy\obj\Release\Interop.Shell32.dll
+D:\Nir\Arduino\Streamy\Streamy\obj\Release\Streamy.csproj.ResolveComReference.cache
+D:\Nir\Arduino\Streamy\Streamy\bin\Release\Streamy.exe.manifest
+D:\Nir\Arduino\Streamy\Streamy\bin\Release\Streamy.application
+D:\Nir\Arduino\Streamy\Streamy\bin\Release\Streamy.exe
+D:\Nir\Arduino\Streamy\Streamy\bin\Release\Streamy.pdb
+D:\Nir\Arduino\Streamy\Streamy\obj\Release\Streamy.Form1.resources
+D:\Nir\Arduino\Streamy\Streamy\obj\Release\Streamy.Properties.Resources.resources
+D:\Nir\Arduino\Streamy\Streamy\obj\Release\Streamy.csproj.GenerateResource.Cache
+D:\Nir\Arduino\Streamy\Streamy\obj\Release\Streamy.exe.manifest
+D:\Nir\Arduino\Streamy\Streamy\obj\Release\Streamy.application
+D:\Nir\Arduino\Streamy\Streamy\obj\Release\Streamy.exe
+D:\Nir\Arduino\Streamy\Streamy\obj\Release\Streamy.pdb
