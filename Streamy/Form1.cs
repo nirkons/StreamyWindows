@@ -610,7 +610,7 @@ namespace Streamy
                     }
                 }
 
-                System.Diagnostics.Process.Start(lastwatchedlink);
+                System.Diagnostics.Process.Start("https://www.netflix.com/watch/"+lastwatchedlink);
                 System.Threading.Thread.Sleep(5500);
                 ls = GetAllWindows();
                 //full screen video
