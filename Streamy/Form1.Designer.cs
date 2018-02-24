@@ -38,7 +38,6 @@
             this.usernamelabel = new System.Windows.Forms.Label();
             this.Username = new System.Windows.Forms.TextBox();
             this.configurevideo = new System.Windows.Forms.Button();
-            this.videonotconfiguredlabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
@@ -57,6 +56,7 @@
             this.closevideobox = new System.Windows.Forms.CheckBox();
             this.spotcheckbox = new System.Windows.Forms.CheckBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.videonotconfiguredlabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -148,15 +148,6 @@
             this.configurevideo.UseVisualStyleBackColor = true;
             this.configurevideo.Click += new System.EventHandler(this.button3_Click);
             // 
-            // videonotconfiguredlabel
-            // 
-            this.videonotconfiguredlabel.AutoSize = true;
-            this.videonotconfiguredlabel.Location = new System.Drawing.Point(17, 27);
-            this.videonotconfiguredlabel.Name = "videonotconfiguredlabel";
-            this.videonotconfiguredlabel.Size = new System.Drawing.Size(117, 13);
-            this.videonotconfiguredlabel.TabIndex = 6;
-            this.videonotconfiguredlabel.Text = "Netflix is not configured";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -183,9 +174,9 @@
             this.label10.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label10.Location = new System.Drawing.Point(7, 27);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(104, 13);
+            this.label10.Size = new System.Drawing.Size(87, 13);
             this.label10.TabIndex = 3;
-            this.label10.Text = "Music app is running";
+            this.label10.Text = "Spotify is running";
             this.label10.Visible = false;
             // 
             // label8
@@ -193,9 +184,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(7, 27);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(122, 13);
+            this.label8.Size = new System.Drawing.Size(105, 13);
             this.label8.TabIndex = 1;
-            this.label8.Text = "Music app is not running";
+            this.label8.Text = "Spotify is not running";
             // 
             // label2
             // 
@@ -341,6 +332,15 @@
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
+            // videonotconfiguredlabel
+            // 
+            this.videonotconfiguredlabel.AutoSize = true;
+            this.videonotconfiguredlabel.Location = new System.Drawing.Point(17, 27);
+            this.videonotconfiguredlabel.Name = "videonotconfiguredlabel";
+            this.videonotconfiguredlabel.Size = new System.Drawing.Size(117, 13);
+            this.videonotconfiguredlabel.TabIndex = 6;
+            this.videonotconfiguredlabel.Text = "Netflix is not configured";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -386,7 +386,6 @@
         private System.Windows.Forms.Label vlcnotconfiguredlabel;
         private System.Windows.Forms.Button configurevlc;
         private System.Windows.Forms.Button configurevideo;
-        private System.Windows.Forms.Label videonotconfiguredlabel;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label vlcinstalled;
@@ -401,6 +400,7 @@
         private System.Windows.Forms.CheckBox closevideobox;
         private System.Windows.Forms.CheckBox spotcheckbox;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Label videonotconfiguredlabel;
     }
 }
 

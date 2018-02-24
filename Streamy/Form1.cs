@@ -84,13 +84,13 @@ namespace Streamy
             InitializeComponent();
             //Setup tooltip for "close video streaming windows" checkbox
             ToolTip toolTip1 = new ToolTip();
-            toolTip1.SetToolTip(this.closevideobox, "Video service does not allow multiple streaming tabs on the same browser, so this will close the open tab");
+            toolTip1.SetToolTip(this.closevideobox, "Netflix does not allow multiple streaming tabs on the same browser, so this will close the open tab");
 
             //Setup configuration
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             
 
-            if ((config.AppSettings.Settings["username"].Value != ""))
+            if ((config.AppSettings.Settings["username"].Value != "{{usernameval}}"))
             {
                 videonotconfiguredlabel.Visible = false;
                 configurevideo.Visible = false;
@@ -98,140 +98,7 @@ namespace Streamy
                 confvideoagain.Visible = true;
             }
 
-            //get video service name from cloud
-            if (config.AppSettings.Settings["videoservicename"] == null || config.AppSettings.Settings["videoservicename"].Value == "")
-            {
-                string html = "";
-                string url = @"https://api.thingspeak.com/channels/418232/fields/1.xml?api_key=FDDXM9I0TKKIFHVL&results=1";
-
-                try
-                {
-                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                    request.Timeout = 4000;
-                    request.ReadWriteTimeout = 4000;
-                    request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-
-                    using (HttpWebResponse videoresponse = (HttpWebResponse)request.GetResponse())
-                    using (Stream stream = videoresponse.GetResponseStream())
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        html = reader.ReadToEnd();
-                    }
-
-                    int from = html.LastIndexOf("<field1>") + 8;
-                    string videoservice = html.Substring(from, 7);
-
-                    config.AppSettings.Settings.Add("videoservicename", videoservice);
-
-                    if (config.AppSettings.Settings["videoservicename"].Value.Contains(","))
-                    {
-                        config.AppSettings.Settings.Remove("videoservicename");
-                        config.AppSettings.Settings.Add("videoservicename", videoservice);
-                    }
-
-
-                    // Save the changes in App.config file.
-                    config.Save(ConfigurationSaveMode.Modified);
-
-                    // Force a reload of a changed section.
-                    ConfigurationManager.RefreshSection("appSettings");
-
-                }
-                catch (Exception es)
-                {
-
-                }
-            }
-            //get music service name from cloud
-
-            if (config.AppSettings.Settings["musicservicename"] == null || config.AppSettings.Settings["musicservicename"].Value == "")
-            {
-                string html = "";
-                string url = @"https://api.thingspeak.com/channels/432248/fields/1.xml?api_key=K69YT0LN7V9ONPPT&results=1";
-
-                try
-                {
-                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                    request.Timeout = 4000;
-                    request.ReadWriteTimeout = 4000;
-                    request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-
-                    using (HttpWebResponse musicresponse = (HttpWebResponse)request.GetResponse())
-                    using (Stream stream = musicresponse.GetResponseStream())
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        html = reader.ReadToEnd();
-                    }
-
-                    int from = html.LastIndexOf("<field1>") + 8;
-                    string musicservice = html.Substring(from, 7);
-
-                    config.AppSettings.Settings.Add("musicservicename", musicservice);
-
-
-                    if (config.AppSettings.Settings["musicservicename"].Value.Contains(","))
-                    {
-                        config.AppSettings.Settings.Remove("musicservicename");
-                        config.AppSettings.Settings.Add("musicservicename", musicservice);
-                    }
-
-                    // Save the changes in App.config file.
-                    config.Save(ConfigurationSaveMode.Modified);
-
-                    // Force a reload of a changed section.
-                    ConfigurationManager.RefreshSection("appSettings");
-                }
-                catch (Exception es)
-                {
-
-                }
-            }
-
-            //get browser service
-
-            if (config.AppSettings.Settings["browserservicename"] == null || config.AppSettings.Settings["browserservicename"].Value == "")
-            {
-                string html = "";
-                string url = @"https://api.thingspeak.com/channels/432578/fields/1.xml?api_key=26PH4X8T45TGV0F8&results=1";
-
-                try
-                {
-                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                    request.Timeout = 4000;
-                    request.ReadWriteTimeout = 4000;
-                    request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-
-                    using (HttpWebResponse browserreponse = (HttpWebResponse)request.GetResponse())
-                    using (Stream stream = browserreponse.GetResponseStream())
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        html = reader.ReadToEnd();
-                    }
-
-                    int from = html.LastIndexOf("<field1>") + 8;
-                    string browserservice = html.Substring(from, 13);
-
-                    config.AppSettings.Settings.Add("browserservicename", browserservice);
-
-
-                    if (config.AppSettings.Settings["browserservicename"].Value.Contains(","))
-                    {
-                        config.AppSettings.Settings.Remove("browserservicename");
-                        config.AppSettings.Settings.Add("browserservicename", browserservice);
-                    }
-
-                    // Save the changes in App.config file.
-                    config.Save(ConfigurationSaveMode.Modified);
-
-                    // Force a reload of a changed section.
-                    ConfigurationManager.RefreshSection("appSettings");
-                }
-                catch (Exception es)
-                {
-
-                }
-            }
-
+            
             //Check if program is running as admin, in order to startup with windows
             bool isadmin = IsAdministrator();
             if (isadmin==false)
@@ -267,14 +134,13 @@ namespace Streamy
             }
             
 
-            //Call function to check if music service is running every few seconds
+            //Call function to check if Spotify is running every few seconds
             InitTimer();
-
-
+            
 
         }
 
-        //CHECK EVERY FEW SECONDS THAT music service IS RUNNING
+        //Check every few seconds if Spotify is running
         private System.Windows.Forms.Timer timer1;
         public void InitTimer()
         {
@@ -286,11 +152,9 @@ namespace Streamy
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            string musicservicename = ReadFromSettings("musicservicename");
-            //check if music service app is running
-            if (musicservicename != "")
-            {
-                Process[] P = Process.GetProcessesByName(musicservicename);
+            //check if Spotify service app is running
+         
+                Process[] P = Process.GetProcessesByName("Spotify");
 
                 if (P.Length > 0)
                 {
@@ -304,7 +168,7 @@ namespace Streamy
                     label8.Visible = true;
                     label10.Visible = false;
                 }
-            }
+            
 
         }
 
@@ -548,6 +412,7 @@ namespace Streamy
                 usernamelabel.Visible = false;
                 confvideoagain.Visible = true;
                 videoconfiguredlbl.Visible = true;
+                videonotconfiguredlabel.Visible = false;
 
 
             }
@@ -558,7 +423,7 @@ namespace Streamy
             // Force a reload of a changed section.
             ConfigurationManager.RefreshSection("appSettings");
         }
-
+        //configure blynk auth again
         private void confvideoagain_Click(object sender, EventArgs e)
         {
             videoconfiguredlbl.Visible = false;
@@ -683,7 +548,7 @@ namespace Streamy
             }
             catch (Exception e)
             {
-                log.Items.Add("Problem with video streaming account or wrong Blynk API key");
+                log.Items.Add("Problem with Netflix account or wrong Blynk API key");
                 log.Items.Add(e.ToString());
                 return e.ToString();
             
@@ -707,7 +572,7 @@ namespace Streamy
             // Force a reload of a changed section.
             ConfigurationManager.RefreshSection("appSettings");
         }
-
+        //read value from settings
         public string ReadFromSettings(string key)
         {
             //Setup configuration
@@ -726,8 +591,6 @@ namespace Streamy
         //Open video streaming service and close existing windows
         public void OpenVideoService()
         {
-            string videoservicename = ReadFromSettings("videoservicename");
-            string browserservice = ReadFromSettings("browserservicename");
 
             string lastwatchedlink = LastWatched();
 
@@ -736,7 +599,7 @@ namespace Streamy
                 bool once = false;
                 foreach (var tb in ls)
                 {
-                    if (GetTitle(tb).Contains(videoservicename) && GetTitle(tb).Contains(browserservice) && once == false)
+                    if ((GetTitle(tb).Contains("netflix") || GetTitle(tb).Contains("Netflix")) && (GetTitle(tb).Contains("Google Chrome") && once == false))
                     {
                         IntPtr zero = FindWindow(null, GetTitle(tb));
                         SwitchToThisWindow(zero, true);
@@ -753,7 +616,7 @@ namespace Streamy
                 //full screen video
                 foreach (var tb in ls)
                 {
-                    if (GetTitle(tb).Contains(videoservicename) && GetTitle(tb).Contains(browserservice))
+                    if ((GetTitle(tb).Contains("netflix") || GetTitle(tb).Contains("Netflix")) && (GetTitle(tb).Contains("Google Chrome")))
                     {
                         IntPtr zero = FindWindow(null, GetTitle(tb));
                         SwitchToThisWindow(zero, true);
@@ -768,13 +631,12 @@ namespace Streamy
         //open Music stream
         public void MusicStream()
         {
-            string musicservicename = ReadFromSettings("musicservicename");
 
-            Process[] P = Process.GetProcessesByName(musicservicename);
+            Process[] P = Process.GetProcessesByName("Spotify");
 
             if (P.Length <= 0)
             {
-                Process proc = Process.Start("C:\\Users\\"+Environment.UserName+"\\AppData\\Roaming\\"+ musicservicename+"\\"+ musicservicename);
+                Process proc = Process.Start("C:\\Users\\"+Environment.UserName+"\\AppData\\Roaming\\Spotify\\Spotify.exe");
                 
                 while (string.IsNullOrEmpty(proc.MainWindowTitle) || proc.MainWindowTitle=="")
                 {
@@ -789,7 +651,7 @@ namespace Streamy
             {
                 System.Threading.Thread.Sleep(1000);
             }
-            P = Process.GetProcessesByName(musicservicename);
+            P = Process.GetProcessesByName("Spotify");
             if (P.Length > 0)
             {
                 string spotwindow = "";
@@ -811,7 +673,7 @@ namespace Streamy
 
                 foreach (var tb in ls)
                 {
-                    if (GetTitle(tb).Contains(musicservicename) || GetTitle(tb).Contains(spotwindow))
+                    if (GetTitle(tb).Contains("Spotify") || GetTitle(tb).Contains(spotwindow))
                     {
                         IntPtr zero = FindWindow(null, GetTitle(tb));
                         SwitchToThisWindow(zero, true);
@@ -823,27 +685,6 @@ namespace Streamy
             }
       }
 
-        public void stopSong()
-        {
-            string musicservicename = ReadFromSettings("musicservicename");
-            Process[] P = Process.GetProcessesByName(musicservicename);
-
-            if (P.Length > 0)
-            {
-                foreach (var tb in P)
-                {
-                    if (tb.MainWindowTitle != musicservicename && tb.MainWindowTitle != null && tb.MainWindowTitle != "")
-                    {
-                        IntPtr zero = tb.MainWindowHandle;
-                        SwitchToThisWindow(zero, true);
-                        SetForegroundWindow(zero);
-                        SendKeys.SendWait(" ");
-                        SendKeys.Flush();
-                    }
-                }
-                   
-            }
-        }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {

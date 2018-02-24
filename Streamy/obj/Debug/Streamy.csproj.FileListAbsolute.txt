@@ -58,9 +58,5 @@ D:\Nir\Arduino\Streamy\Streamy\obj\Debug\Streamy.csprojResolveAssemblyReference.
 D:\Nir\Arduino\Streamy\Streamy\obj\Debug\Streamy.Form1.resources
 D:\Nir\Arduino\Streamy\Streamy\obj\Debug\Streamy.Properties.Resources.resources
 D:\Nir\Arduino\Streamy\Streamy\obj\Debug\Streamy.csproj.GenerateResource.Cache
-D:\Nir\Arduino\Streamy\Streamy\bin\Debug\Streamy.exe.manifest
-D:\Nir\Arduino\Streamy\Streamy\bin\Debug\Streamy.application
 D:\Nir\Arduino\Streamy\Streamy\bin\Debug\Streamy.exe
 D:\Nir\Arduino\Streamy\Streamy\bin\Debug\Streamy.pdb
-D:\Nir\Arduino\Streamy\Streamy\obj\Debug\Streamy.exe.manifest
-D:\Nir\Arduino\Streamy\Streamy\obj\Debug\Streamy.application

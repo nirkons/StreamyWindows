@@ -6,7 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
-//Taken from https://docs.microsoft.com/en-us/dotnet/framework/network-programming/asynchronous-server-socket-example
+//https://docs.microsoft.com/en-us/dotnet/framework/network-programming/asynchronous-server-socket-example
 //And modified to fit this project's needs
 //State object for reading client data asynchronously  
 
@@ -151,7 +151,8 @@ public class AsynchronousSocketListener
             // Check for end-of-file tag. If it is not there, read   
             // more data.  
             content = state.sb.ToString();
-            if (content.IndexOf("<EOF>") > -1 || content.IndexOf("-EOF-") > -1 )
+            Console.WriteLine(content);
+            if (content.IndexOf("<EOF>") > -1 || content.IndexOf("-EOF-") > -1)
             {
                 // All the data has been read from the   
                 // client. Display it on the console.  
@@ -176,13 +177,6 @@ public class AsynchronousSocketListener
                     if (System.Windows.Forms.Application.OpenForms["Form1"] != null)
                     {
                         (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).MusicStream();
-                    }
-                }
-                else if (getdata == "4")
-                {
-                    if (System.Windows.Forms.Application.OpenForms["Form1"] != null)
-                    {
-                        (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).stopSong();
                     }
                 }
                 else if (getdata == "3")
