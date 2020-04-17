@@ -60,3 +60,16 @@ D:\Nir\Arduino\Streamy\Streamy\obj\Debug\Streamy.Properties.Resources.resources
 D:\Nir\Arduino\Streamy\Streamy\obj\Debug\Streamy.csproj.GenerateResource.Cache
 D:\Nir\Arduino\Streamy\Streamy\bin\Debug\Streamy.exe
 D:\Nir\Arduino\Streamy\Streamy\bin\Debug\Streamy.pdb
+C:\Users\Nir\Documents\GitHub\StreamyWindows\Streamy\bin\Debug\Streamy.exe.config
+C:\Users\Nir\Documents\GitHub\StreamyWindows\Streamy\bin\Debug\Streamy.exe
+C:\Users\Nir\Documents\GitHub\StreamyWindows\Streamy\bin\Debug\Streamy.pdb
+C:\Users\Nir\Documents\GitHub\StreamyWindows\Streamy\obj\Debug\Streamy.csprojAssemblyReference.cache
+C:\Users\Nir\Documents\GitHub\StreamyWindows\Streamy\obj\Debug\Interop.IWshRuntimeLibrary.dll
+C:\Users\Nir\Documents\GitHub\StreamyWindows\Streamy\obj\Debug\Interop.Shell32.dll
+C:\Users\Nir\Documents\GitHub\StreamyWindows\Streamy\obj\Debug\Streamy.csproj.ResolveComReference.cache
+C:\Users\Nir\Documents\GitHub\StreamyWindows\Streamy\obj\Debug\Streamy.Form1.resources
+C:\Users\Nir\Documents\GitHub\StreamyWindows\Streamy\obj\Debug\Streamy.Properties.Resources.resources
+C:\Users\Nir\Documents\GitHub\StreamyWindows\Streamy\obj\Debug\Streamy.csproj.GenerateResource.cache
+C:\Users\Nir\Documents\GitHub\StreamyWindows\Streamy\obj\Debug\Streamy.csproj.CoreCompileInputs.cache
+C:\Users\Nir\Documents\GitHub\StreamyWindows\Streamy\obj\Debug\Streamy.exe
+C:\Users\Nir\Documents\GitHub\StreamyWindows\Streamy\obj\Debug\Streamy.pdb
